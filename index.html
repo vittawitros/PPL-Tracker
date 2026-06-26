@@ -3,74 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PPL Training Tracker v5</title>
+<title>PPL Training Tracker v5.1</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --color-text-primary: #1a1a2e;
-  --color-text-secondary: #64748b;
-  --color-text-tertiary: #94a3b8;
-  --color-text-danger: #ef4444;
-  --color-text-success: #16a34a;
-  --color-text-info: #2563eb;
-  --color-background-page: #f1f5f9;
-  --color-background-primary: #ffffff;
-  --color-background-secondary: #f8fafc;
-  --color-background-info: #eff6ff;
-  --color-border-primary: #cbd5e1;
-  --color-border-secondary: #e2e8f0;
-  --color-border-tertiary: #f1f5f9;
-  --border-radius-sm: 8px;
-  --border-radius-md: 12px;
-  --border-radius-lg: 18px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
-  --accent: #6366f1;
-  --accent-light: #eef2ff;
-  --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6);
-  --swap-bg: #fef3c7;
-  --swap-color: #92400e;
-  --swap-border: #fcd34d;
-  --swap-active-bg: #fde68a;
-  --cat-label-bg: #f1f5f9;
-  --cat-label-color: #475569;
-  --search-bg: #f8fafc;
-  --success-bg: #ecfdf5;
-  --danger-bg: #fef2f2;
-  --info-bg: #eff6ff;
+  --color-text-primary: #1a1a2e; --color-text-secondary: #64748b; --color-text-tertiary: #94a3b8;
+  --color-text-danger: #ef4444; --color-text-success: #16a34a; --color-text-info: #2563eb;
+  --color-background-page: #f1f5f9; --color-background-primary: #ffffff;
+  --color-background-secondary: #f8fafc; --color-background-info: #eff6ff;
+  --color-border-primary: #cbd5e1; --color-border-secondary: #e2e8f0; --color-border-tertiary: #f1f5f9;
+  --border-radius-sm: 8px; --border-radius-md: 12px; --border-radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04); --shadow-md: 0 4px 12px rgba(0,0,0,0.06); --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+  --accent: #6366f1; --accent-light: #eef2ff; --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --swap-bg: #fef3c7; --swap-color: #92400e; --swap-border: #fcd34d; --swap-active-bg: #fde68a;
+  --cat-label-bg: #f1f5f9; --cat-label-color: #475569; --search-bg: #f8fafc;
+  --success-bg: #ecfdf5; --danger-bg: #fef2f2; --info-bg: #eff6ff;
 }
 [data-theme="dark"] {
-  --color-text-primary: #e2e8f0;
-  --color-text-secondary: #94a3b8;
-  --color-text-tertiary: #64748b;
-  --color-text-danger: #f87171;
-  --color-text-success: #4ade80;
-  --color-text-info: #60a5fa;
-  --color-background-page: #0f172a;
-  --color-background-primary: #1e293b;
-  --color-background-secondary: #334155;
-  --color-background-info: #1e3a5f;
-  --color-border-primary: #475569;
-  --color-border-secondary: #334155;
-  --color-border-tertiary: #1e293b;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
-  --accent-light: #312e81;
-  --swap-bg: #422006;
-  --swap-color: #fcd34d;
-  --swap-border: #78350f;
-  --swap-active-bg: #78350f;
-  --cat-label-bg: #334155;
-  --cat-label-color: #94a3b8;
-  --search-bg: #334155;
-  --success-bg: #064e3b;
-  --danger-bg: #450a0a;
-  --info-bg: #1e3a5f;
+  --color-text-primary: #e2e8f0; --color-text-secondary: #94a3b8; --color-text-tertiary: #64748b;
+  --color-text-danger: #f87171; --color-text-success: #4ade80; --color-text-info: #60a5fa;
+  --color-background-page: #0f172a; --color-background-primary: #1e293b;
+  --color-background-secondary: #334155; --color-background-info: #1e3a5f;
+  --color-border-primary: #475569; --color-border-secondary: #334155; --color-border-tertiary: #1e293b;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3); --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
+  --accent-light: #312e81; --swap-bg: #422006; --swap-color: #fcd34d; --swap-border: #78350f; --swap-active-bg: #78350f;
+  --cat-label-bg: #334155; --cat-label-color: #94a3b8; --search-bg: #334155;
+  --success-bg: #064e3b; --danger-bg: #450a0a; --info-bg: #1e3a5f;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-sans); font-size: 14px; background: var(--color-background-page); color: var(--color-text-primary); min-height: 100vh; transition: background 0.3s, color 0.3s; }
@@ -150,7 +112,6 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
 #save-msg { text-align: center; font-size: 13px; font-weight: 600; color: var(--color-text-success); margin-top: 10px; min-height: 22px; }
 .section-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
 .muted { color: var(--color-text-secondary); font-size: 12px; line-height: 1.6; }
-.small { font-size: 11px; color: var(--color-text-tertiary); line-height: 1.5; }
 .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
 .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
@@ -170,20 +131,14 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
 .badge-up { background: var(--success-bg); color: var(--color-text-success); }
 .badge-same { background: var(--color-background-secondary); color: var(--color-text-tertiary); }
 .badge-down { background: var(--danger-bg); color: var(--color-text-danger); }
-
-/* === v5: Per-exercise save + delete (Mode B) === */
 .card-actions { display: flex; gap: 6px; flex-shrink: 0; align-items: center; flex-wrap: wrap; }
 .save-ex-btn { display: flex; align-items: center; gap: 4px; padding: 5px 10px; border: 1.5px solid #16a34a; border-radius: 50px; background: var(--success-bg); color: var(--color-text-success); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); transition: all 0.2s; white-space: nowrap; }
 .save-ex-btn:hover { background: #d1fae5; }
 .save-ex-btn.saved { background: #16a34a; color: #fff; border-color: #16a34a; transform: scale(1.05); }
-[data-theme="dark"] .save-ex-btn:hover { background: #047857; }
 .delete-ex-btn { display: flex; align-items: center; gap: 4px; padding: 5px 10px; border: 1.5px solid #ef4444; border-radius: 50px; background: var(--danger-bg); color: var(--color-text-danger); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); transition: all 0.2s; white-space: nowrap; }
 .delete-ex-btn:hover { background: #fecaca; }
-[data-theme="dark"] .delete-ex-btn:hover { background: #7f1d1d; }
 .ex-save-msg { font-size: 11px; color: var(--color-text-success); margin-top: 8px; min-height: 14px; font-weight: 500; text-align: right; }
 .ex-save-msg.warn { color: var(--color-text-danger); }
-
-/* === v5: History with expand + delete === */
 .history-entry { padding: 14px 16px; margin-bottom: 8px; background: var(--color-background-primary); border-radius: var(--border-radius-md); border: 1px solid var(--color-border-tertiary); box-shadow: var(--shadow-sm); cursor: pointer; transition: box-shadow 0.2s, border-color 0.2s; }
 .history-entry:hover { box-shadow: var(--shadow-md); border-color: var(--color-border-secondary); }
 .history-entry.expanded { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(99,102,241,0.12); }
@@ -206,7 +161,6 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
 .history-ex-del:hover { background: var(--danger-bg); border-color: #ef4444; color: var(--color-text-danger); }
 .history-set-list { display: flex; flex-wrap: wrap; gap: 4px; }
 .history-set-pill { font-size: 11px; padding: 3px 8px; border-radius: 50px; background: var(--color-background-primary); border: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace; }
-
 @media (max-width: 520px) { .field-grid, .tool-grid { grid-template-columns: 1fr; } .nav { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
@@ -214,7 +168,7 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
 <div class="header">
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><i class="ti ti-moon" id="theme-icon"></i></button>
   <h1>&#127947; PPL Training Tracker</h1>
-  <p>Push &middot; Pull &middot; Legs &mdash; v5 with full edit/delete</p>
+  <p>Push &middot; Pull &middot; Legs &mdash; v5.1 with full edit/delete</p>
 </div>
 
 <div class="app">
@@ -329,7 +283,7 @@ const EXERCISE_POOL = {
     Abs: ['Abs Crunch Machine','Cable Crunch','Hanging Leg Raise','Hanging Knee Raise','Ab Roller','Decline Sit-Up','Plank','Russian Twist','Bicycle Crunch','Dragon Flag','Pallof Press (Cable)','Woodchop (Cable)','V-Up','Toe Touch Crunch']
   },
   Legs: {
-    Quads: ['Leg Extension (Machine)','Single-Leg Extension','Barbell Squat (Back)','Barbell Squat (Front)','Goblet Squat (DB)','Hack Squat Machine','45° Leg Press','Horizontal Leg Press','Smith Machine Squat','Bulgarian Split Squat (DB)','Walking Lunge (DB)','Reverse Lunge (DB)','Step-Up (DB)','Sissy Squat','Pistol Squat (BW)','Belt Squat Machine','Pendulum Squat','V-Squat Machine'],
+    Quads: ['Leg Extension (Machine)','Single-Leg Extension','Barbell Squat (Back)','Barbell Squat (Front)','Goblet Squat (DB)','Hack Squat Machine','45 Leg Press','Horizontal Leg Press','Smith Machine Squat','Bulgarian Split Squat (DB)','Walking Lunge (DB)','Reverse Lunge (DB)','Step-Up (DB)','Sissy Squat','Pistol Squat (BW)','Belt Squat Machine','Pendulum Squat','V-Squat Machine'],
     Hamstrings: ['Romanian Deadlift (Barbell)','Romanian Deadlift (DB)','Single-Leg RDL (DB)','Stiff-Leg Deadlift','Good Morning (Barbell)','Seated Leg Curl','Lying Leg Curl','Nordic Hamstring Curl','Stability Ball Curl','Cable Pull-Through','Glute-Ham Raise','Kettlebell Swing'],
     Glutes: ['Hip Thrust (Barbell)','Hip Thrust (Machine)','Cable Kickback (Glute)','Glute Bridge (BW)','Frog Pump','Sumo Squat (DB)','Cable Pull-Through (Glute Focus)','Reverse Hyperextension'],
     Calves: ['Standing Calf Raise (Machine)','Seated Calf Raise (Machine)','Smith Machine Calf Raise','Leg Press Calf Raise','Donkey Calf Raise','Single-Leg Calf Raise (DB)','Tibialis Raise'],
@@ -358,7 +312,7 @@ const EXERCISES = {
   ],
   Legs: [
     {name:'Leg Extension (Machine)', muscle:'Quads', sets:[{label:'Warm-up',kg:52,reps:12},{label:'Set 1',kg:93,reps:10},{label:'Set 2',kg:102,reps:10},{label:'Set 3',kg:111,reps:10},{label:'Set 4',kg:129,reps:10}]},
-    {name:'45° Leg Press', muscle:'Quads', sets:[{label:'Set 1',kg:100,reps:12},{label:'Set 2',kg:150,reps:10},{label:'Set 3',kg:150,reps:12},{label:'Set 4',kg:170,reps:8}]},
+    {name:'45 Leg Press', muscle:'Quads', sets:[{label:'Set 1',kg:100,reps:12},{label:'Set 2',kg:150,reps:10},{label:'Set 3',kg:150,reps:12},{label:'Set 4',kg:170,reps:8}]},
     {name:'Romanian Deadlift (Barbell)', muscle:'Hamstrings', sets:[{label:'Sets 1-3',kg:60,reps:12}]},
     {name:'Seated Leg Curl', muscle:'Hamstrings', sets:[{label:'Set 1',kg:82,reps:12},{label:'Sets 2-3',kg:91,reps:8}]},
     {name:'Abs Crunch Machine', muscle:'Abs', sets:[{label:'Set 1',kg:84,reps:15},{label:'Set 2',kg:93,reps:15},{label:'Set 3',kg:102,reps:15}]},
@@ -366,7 +320,7 @@ const EXERCISES = {
   ]
 };
 
-const APP_VERSION = 'v5';
+const APP_VERSION = 'v5.1';
 const APP_PREFIX = 'ppl_tracker_' + (location.pathname.replace(/[^a-z0-9]/gi, '_') || 'root') + '_';
 const STORAGE_KEYS = {
   sessions: APP_PREFIX + 'sessions',
@@ -411,15 +365,15 @@ function escapeHtml(text) { return String(text).replace(/&/g, '&amp;').replace(/
 function buildOptionHTML(ei, exName, activeName, iconClass, muscle) {
   const isSel = exName === activeName; const safeName = escapeHtml(exName); const safeMuscle = muscle ? escapeHtml(muscle) : '';
   const jsArg = JSON.stringify(exName).replace(/"/g, '&quot;');
-  return `<button class="swap-option${isSel ? ' selected' : ''}" data-name="${safeName}" onclick="selectAlt(${ei}, ${jsArg})">`
-    + `<span class="swap-icon"><i class="ti ${iconClass}"></i></span>${safeName}`
-    + (muscle ? `<span class="muscle-tag">${safeMuscle}</span>` : '') + `</button>`;
+  return '<button class="swap-option' + (isSel ? ' selected' : '') + '" data-name="' + safeName + '" onclick="selectAlt(' + ei + ', ' + jsArg + ')">'
+    + '<span class="swap-icon"><i class="ti ' + iconClass + '"></i></span>' + safeName
+    + (muscle ? '<span class="muscle-tag">' + safeMuscle + '</span>' : '') + '</button>';
 }
 function buildSwapHTML(ei) {
   const pool = EXERCISE_POOL[currentDay]; const activeName = getActiveExName(ei); const defaultName = EXERCISES[currentDay][ei].name;
   let html = '<div class="swap-search-wrap"><i class="ti ti-search search-icon"></i>';
   html += '<input class="swap-search" type="text" placeholder="Search exercises..." oninput="filterSwap(' + ei + ', this.value)"></div>';
-  html += '<div class="swap-cat-label">⭐ Your Default</div>';
+  html += '<div class="swap-cat-label">Your Default</div>';
   html += buildOptionHTML(ei, defaultName, activeName, 'ti-star', '');
   for (const cat in pool) {
     html += '<div class="swap-cat-label">' + cat.toUpperCase() + '</div>';
@@ -492,16 +446,15 @@ function updateStatus(ei, si) {
   const exName = getActiveExName(ei); const prev = getLastSessionData(exName); const curKg = parseFloat(kgEl.value) || 0;
   if (!prev || prev.length <= si) { statusEl.textContent = 'new'; statusEl.className = 'status-badge badge-same'; return; }
   const prevKg = prev[si] ? prev[si].kg : 0;
-  if (curKg > prevKg) { statusEl.textContent = '⬆ PR'; statusEl.className = 'status-badge badge-up'; }
-  else if (curKg < prevKg) { statusEl.textContent = '⬇ lower'; statusEl.className = 'status-badge badge-down'; }
+  if (curKg > prevKg) { statusEl.textContent = 'PR'; statusEl.className = 'status-badge badge-up'; }
+  else if (curKg < prevKg) { statusEl.textContent = 'lower'; statusEl.className = 'status-badge badge-down'; }
   else { statusEl.textContent = 'same'; statusEl.className = 'status-badge badge-same'; }
 }
 
-// -------- Upsert helper --------
 function upsertSession(date, day, exerciseDataPartial) {
   let idx = sessions.findIndex(s => s.date === date && s.day === day);
-  if (idx === -1) sessions.push({ date, day, exercises: { ...exerciseDataPartial } });
-  else sessions[idx].exercises = { ...(sessions[idx].exercises || {}), ...exerciseDataPartial };
+  if (idx === -1) sessions.push({ date, day, exercises: Object.assign({}, exerciseDataPartial) });
+  else sessions[idx].exercises = Object.assign({}, sessions[idx].exercises || {}, exerciseDataPartial);
   saveData();
 }
 function collectExerciseSets(ei) {
@@ -519,20 +472,19 @@ function showExSaveMsg(ei, text, isWarn) {
   setTimeout(() => { if (el.textContent === text) el.textContent = ''; }, 2600);
 }
 
-// -------- Mode B: Save single exercise --------
 async function saveExercise(ei) {
   const date = document.getElementById('session-date').value || new Date().toISOString().slice(0, 10);
   const activeName = getActiveExName(ei); const sets = collectExerciseSets(ei);
-  if (!sets.length) { showExSaveMsg(ei, '⚠️ No sets with values to save', true); return; }
-  upsertSession(date, currentDay, { [activeName]: sets });
+  if (!sets.length) { showExSaveMsg(ei, 'No sets with values to save', true); return; }
+  const partial = {}; partial[activeName] = sets;
+  upsertSession(date, currentDay, partial);
   const btn = document.getElementById('save-ex-btn-' + ei);
   if (btn) { btn.classList.add('saved'); btn.innerHTML = '<i class="ti ti-check"></i> Saved'; setTimeout(() => { btn.classList.remove('saved'); btn.innerHTML = '<i class="ti ti-device-floppy"></i> Save'; }, 1800); }
-  showExSaveMsg(ei, '✅ ' + activeName + ' saved (' + sets.length + ' set' + (sets.length > 1 ? 's' : '') + ')');
+  showExSaveMsg(ei, activeName + ' saved (' + sets.length + ' set' + (sets.length > 1 ? 's' : '') + ')');
   populateProgressSelect(); renderStats();
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
 
-// -------- v5: Delete exercise from current card (Log) --------
 async function deleteExerciseFromCard(ei) {
   const date = document.getElementById('session-date').value || new Date().toISOString().slice(0, 10);
   const activeName = getActiveExName(ei);
@@ -544,12 +496,12 @@ async function deleteExerciseFromCard(ei) {
     delete sessions[sessionIdx].exercises[activeName];
     if (!Object.keys(sessions[sessionIdx].exercises).length) sessions.splice(sessionIdx, 1);
     saveData();
-    showExSaveMsg(ei, '🗑️ ' + activeName + ' removed from session');
+    showExSaveMsg(ei, activeName + ' removed from session');
     populateProgressSelect(); renderStats();
     if (isAutoSyncEnabled()) await pushCloud(true);
   } else {
     resetExerciseInputs(ei);
-    showExSaveMsg(ei, '↩️ Inputs reset to defaults');
+    showExSaveMsg(ei, 'Inputs reset to defaults');
   }
 }
 function resetExerciseInputs(ei) {
@@ -559,7 +511,6 @@ function resetExerciseInputs(ei) {
   ex.sets.forEach((s, si) => addSetRow(ei, si, s.label, s.kg, s.reps));
 }
 
-// -------- Mode A: Save entire session --------
 async function saveSession() {
   const date = document.getElementById('session-date').value || new Date().toISOString().slice(0, 10);
   const exs = EXERCISES[currentDay]; const exerciseData = {}; let totalSets = 0;
@@ -567,9 +518,9 @@ async function saveSession() {
     const sets = collectExerciseSets(ei);
     if (sets.length) { exerciseData[getActiveExName(ei)] = sets; totalSets += sets.length; }
   });
-  if (!totalSets) { showSaveMsg('⚠️ No sets to save'); return; }
+  if (!totalSets) { showSaveMsg('No sets to save'); return; }
   upsertSession(date, currentDay, exerciseData);
-  showSaveMsg('✅ Session saved (' + Object.keys(exerciseData).length + ' exercises, ' + totalSets + ' sets)');
+  showSaveMsg('Session saved (' + Object.keys(exerciseData).length + ' exercises, ' + totalSets + ' sets)');
   populateProgressSelect(); renderStats();
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
@@ -580,7 +531,7 @@ function showSaveMsg(text) {
 }
 function populateProgressSelect() {
   const sel = document.getElementById('prog-ex'); const current = sel.value;
-  sel.innerHTML = '<option value="">— Select exercise —</option>';
+  sel.innerHTML = '<option value="">-- Select exercise --</option>';
   const allEx = new Set(); sessions.forEach(s => Object.keys(s.exercises || {}).forEach(k => allEx.add(k)));
   [...allEx].sort().forEach(ex => { const o = document.createElement('option'); o.value = ex; o.textContent = ex; sel.appendChild(o); });
   if (current) sel.value = current;
@@ -613,45 +564,32 @@ function renderChart() {
   });
 }
 
-// -------- v5: History with expand + delete --------
 function renderHistory() {
   const wrap = document.getElementById('history-list');
   if (!sessions.length) { wrap.innerHTML = '<div class="empty"><i class="ti ti-calendar-off"></i>No sessions logged yet.<br>Start by logging your first workout!</div>'; return; }
   wrap.innerHTML = '';
-  const reversed = [...sessions].map((s, origIdx) => ({ s, origIdx })).reverse();
-  reversed.forEach(({ s, origIdx }) => {
+  const reversed = [...sessions].reverse();
+  reversed.forEach(s => {
     const exNames = Object.keys(s.exercises || {});
     const topSets = exNames.slice(0, 4).map(n => { const sets = s.exercises[n]; return escapeHtml(n) + ': ' + Math.max(...sets.map(x => x.kg)) + 'kg'; });
     const sessionKey = s.date + '|' + s.day;
     const isExpanded = expandedHistory.has(sessionKey);
 
-    let detailHtml = '<div class="history-detail">';
-    exNames.forEach(exName => {
-      const sets = s.exercises[exName];
-      const setPillsHtml = sets.map((st, i) => '<span class="history-set-pill">S' + (i+1) + ': ' + st.kg + 'kg × ' + st.reps + '</span>').join('');
-      const exArg = JSON.stringify(exName).replace(/"/g, '&quot;');
-      detailHtml += '<div class="history-ex-block">' +
-        '<div class="history-ex-head">' +
-          '<div class="history-ex-name">' + escapeHtml(exName) + '</div>' +
-          '<button class="history-ex-del" onclick="event.stopPropagation(); deleteExerciseFromHistory(\'' + s.date + '\', \'' + s.day + '\', ' + exArg + ')"><i class="ti ti-trash"></i> Remove</button>' +
-        '</div>' +
-        '<div class="history-set-list">' + setPillsHtml + '</div>' +
-      '</div>';
-    });
-    detailHtml += '</div>';
-
     const div = document.createElement('div');
     div.className = 'history-entry' + (isExpanded ? ' expanded' : '');
     div.setAttribute('data-key', sessionKey);
-    div.onclick = () => toggleHistoryExpand(sessionKey);
-    div.innerHTML =
-      '<div class="history-head">' +
-        '<div class="history-head-main">' +
-          '<div class="h-date">' + s.date + '</div>' +
-          '<div class="h-day"><i class="ti ti-chevron-right expand-chevron"></i>' + s.day + ' Day <span style="color:var(--color-text-tertiary);font-size:12px;font-weight:500">(' + exNames.length + ' exercises)</span></div>' +
+
+    let detailHtml = '<div class="history-detail">';
+    exNames.forEach(exName => {
+      const sets = s.exercises[exName];
+      const setPillsHtml = sets.map((st, i) => '<span class="history-set-pill">S' + (i+1) + ': ' + st.kg + 'kg x ' + st.reps + '</span>').join('');
+      detailHtml += '<div class="history-ex-block">' +
+        '<div class="history-ex-head">' +
+          '<div class="history-ex-name">' + escapeHtml(exName) + '</div>' +
+          '<button class="history-ex-del" data-action="del-ex" data-date="' + s.date + '" data-day="' + s.day + '" data-ex="' + escapeHtand-chevron"></i>' + s.day + ' Day <span style="color:var(--color-text-tertiary);font-size:12px;font-weight:500">(' + exNames.length + ' exercises)</span></div>' +
           '<div class="h-pills">' + topSets.map(t => '<span class="pill">' + t + '</span>').join('') + (exNames.length > 4 ? '<span class="pill">+' + (exNames.length-4) + ' more</span>' : '') + '</div>' +
         '</div>' +
-        '<button class="history-del-session" onclick="event.stopPropagation(); deleteSession(\'' + s.date + '\', \'' + s.day + '\')" title="Delete this entire session"><i class="ti ti-trash"></i></button>' +
+        '<button class="history-del-session</i></button>' +
       '</div>' +
       detailHtml;
     wrap.appendChild(div);
@@ -670,7 +608,7 @@ async function deleteSession(date, day) {
   sessions.splice(idx, 1); saveData();
   expandedHistory.delete(date + '|' + day);
   renderHistory(); populateProgressSelect(); renderStats();
-  showSaveMsg('🗑️ Session deleted');
+  showSaveMsg('Session deleted');
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
 async function deleteExerciseFromHistory(date, day, exName) {
@@ -684,9 +622,30 @@ async function deleteExerciseFromHistory(date, day, exName) {
     expandedHistory.delete(date + '|' + day);
   }
   saveData(); renderHistory(); populateProgressSelect(); renderStats();
-  showSaveMsg('🗑️ Exercise removed');
+  showSaveMsg('Exercise removed');
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
+
+// Delegated event handler for history list (avoids inline-onclick quoting issues)
+document.addEventListener('click', function(e) {
+  const exDelBtn = e.target.closest('[data-action="del-ex"]');
+  if (exDelBtn) {
+    e.stopPropagation();
+    deleteExerciseFromHistory(exDelBtn.dataset.date, exDelBtn.dataset.day, exDelBtn.dataset.ex);
+    return;
+  }
+  const sessionDelBtn = e.target.closest('[data-action="del-session"]');
+  if (sessionDelBtn) {
+    e.stopPropagation();
+    deleteSession(sessionDelBtn.dataset.date, sessionDelBtn.dataset.day);
+    return;
+  }
+  const expandArea = e.target.closest('[data-action="expand"]');
+  if (expandArea) {
+    toggleHistoryExpand(expandArea.dataset.key);
+    return;
+  }
+});
 
 function goTo(screen, ev) {
   activeScreen = screen;
@@ -705,7 +664,6 @@ function rerenderAll() {
   refreshDataScreen();
 }
 
-// -------- Local tools --------
 function exportData() {
   const payload = { app: 'PPL Training Tracker', version: APP_VERSION, exportedAt: new Date().toISOString(), sessions: sessions };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -723,7 +681,7 @@ async function importData(event) {
     if (!importedSessions) throw new Error('Invalid JSON format');
     sessions = importedSessions; saveData(); rerenderAll();
     setLocalStatus('Import completed: ' + sessions.length + ' session(s) loaded.');
-    showSaveMsg('✅ Import completed');
+    showSaveMsg('Import completed');
     if (isAutoSyncEnabled()) await pushCloud(true);
   } catch(err) { setLocalStatus('Import failed: ' + (err.message || 'Unable to read JSON'), true); }
   event.target.value = '';
@@ -732,17 +690,16 @@ async function clearAllData() {
   const ok = confirm('Clear all locally saved workout data on this device? This cannot be undone.');
   if (!ok) return;
   sessions = []; expandedHistory.clear(); saveData(); rerenderAll();
-  setLocalStatus('Local data cleared.'); showSaveMsg('🧹 Local data cleared');
+  setLocalStatus('Local data cleared.'); showSaveMsg('Local data cleared');
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
-function setLocalStatus(text, isError) { const el = document.getElementById('local-status'); el.innerHTML = '<strong>Status:</strong> ' + text; }
+function setLocalStatus(text) { const el = document.getElementById('local-status'); el.innerHTML = '<strong>Status:</strong> ' + text; }
 function refreshDataScreen() {
   const localCount = sessions.length; const latest = sessions.length ? sessions[sessions.length - 1].date : 'No sessions yet';
   setLocalStatus('This browser currently stores <strong>' + localCount + '</strong> session(s). Latest session date: <strong>' + latest + '</strong>.');
   updateCloudStatus(); loadCloudConfigIntoForm();
 }
 
-// -------- Cloud sync (Firebase Realtime Database) --------
 function getCloudConfigFromForm() {
   return {
     apiKey: document.getElementById('cfg-apiKey').value.trim(),
@@ -778,7 +735,7 @@ async function ensureFirebaseModules() {
   if (firebaseRefs) return firebaseRefs;
   const appMod = await import('https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js');
   const dbMod = await import('https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js');
-  firebaseRefs = { ...appMod, ...dbMod }; return firebaseRefs;
+  firebaseRefs = Object.assign({}, appMod, dbMod); return firebaseRefs;
 }
 function validateCloudConfig(cfg) {
   const required = ['apiKey','authDomain','projectId','databaseURL','appId','syncKey'];
@@ -809,8 +766,8 @@ async function connectCloud() {
       if (incomingTs <= lastCloudTs) return;
       lastCloudTs = incomingTs; sessions = data.sessions; saveData(); rerenderAll();
       updateCloudStatus('Remote update received at ' + new Date(incomingTs).toLocaleString() + '.');
-      showSaveMsg('☁️ Cloud update received');
-    }, (err) => { updateCloudStatus('Cloud listener error: ' + (err.message || err), true); });
+      showSaveMsg('Cloud update received');
+    }, (err) => { updateCloudStatus('Cloud listener error: ' + (err.message || err)); });
     window._cloudDb = db; cloudConnected = true;
     updateCloudStatus('Cloud listener connected. You can now push or pull data.');
   } catch(err) { cloudConnected = false; updateCloudStatus('Connection failed: ' + (err.message || err)); }
@@ -825,7 +782,7 @@ async function pushCloud(silent) {
     await f.set(f.ref(window._cloudDb, 'pplTracker/' + cfg.syncKey), payload);
     lastPushTs = ts; lastCloudTs = ts;
     updateCloudStatus('Local data pushed to cloud at ' + new Date(ts).toLocaleString() + '.');
-    if (!silent) showSaveMsg('☁️ Cloud push completed');
+    if (!silent) showSaveMsg('Cloud push completed');
   } catch(err) { updateCloudStatus('Push failed: ' + (err.message || err)); }
 }
 async function pullCloud() {
@@ -841,16 +798,15 @@ async function pullCloud() {
     lastCloudTs = data.meta && data.meta.updatedAt ? data.meta.updatedAt : Date.now();
     rerenderAll();
     updateCloudStatus('Cloud data pulled successfully. Local device now has ' + sessions.length + ' session(s).');
-    showSaveMsg('☁️ Cloud pull completed');
+    showSaveMsg('Cloud pull completed');
   } catch(err) { updateCloudStatus('Pull failed: ' + (err.message || err)); }
 }
 
-function closePanelsOnOutsideClick(e) {
+document.addEventListener('click', function(e) {
   if (!e.target.closest('.swap-btn') && !e.target.closest('.swap-panel')) {
     document.querySelectorAll('.swap-panel').forEach(d => d.classList.remove('open'));
   }
-}
-document.addEventListener('click', closePanelsOnOutsideClick);
+});
 
 document.getElementById('session-date').value = new Date().toISOString().slice(0, 10);
 loadTheme(); loadData(); renderLogExercises(); populateProgressSelect(); renderStats();
