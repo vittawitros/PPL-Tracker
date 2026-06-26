@@ -3,102 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PPL Training Tracker v5.1</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>PPL Training Tracker v5.2</title>
 <style>
 :root {
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --color-text-primary: #1a1a2e; --color-text-secondary: #64748b; --color-text-tertiary: #94a3b8;
-  --color-text-danger: #ef4444; --color-text-success: #16a34a; --color-text-info: #2563eb;
+  --color-text-danger: #ef4444; --color-text-success: #16a34a;
   --color-background-page: #f1f5f9; --color-background-primary: #ffffff;
-  --color-background-secondary: #f8fafc; --color-background-info: #eff6ff;
-  --color-border-primary: #cbd5e1; --color-border-secondary: #e2e8f0; --color-border-tertiary: #f1f5f9;
+  --color-background-secondary: #f8fafc;
+  --color-border-secondary: #e2e8f0; --color-border-tertiary: #f1f5f9;
   --border-radius-sm: 8px; --border-radius-md: 12px; --border-radius-lg: 18px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04); --shadow-md: 0 4px 12px rgba(0,0,0,0.06); --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
   --accent: #6366f1; --accent-light: #eef2ff; --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6);
   --swap-bg: #fef3c7; --swap-color: #92400e; --swap-border: #fcd34d; --swap-active-bg: #fde68a;
   --cat-label-bg: #f1f5f9; --cat-label-color: #475569; --search-bg: #f8fafc;
-  --success-bg: #ecfdf5; --danger-bg: #fef2f2; --info-bg: #eff6ff;
+  --success-bg: #ecfdf5; --danger-bg: #fef2f2;
 }
 [data-theme="dark"] {
   --color-text-primary: #e2e8f0; --color-text-secondary: #94a3b8; --color-text-tertiary: #64748b;
-  --color-text-danger: #f87171; --color-text-success: #4ade80; --color-text-info: #60a5fa;
+  --color-text-danger: #f87171; --color-text-success: #4ade80;
   --color-background-page: #0f172a; --color-background-primary: #1e293b;
-  --color-background-secondary: #334155; --color-background-info: #1e3a5f;
-  --color-border-primary: #475569; --color-border-secondary: #334155; --color-border-tertiary: #1e293b;
+  --color-background-secondary: #334155;
+  --color-border-secondary: #334155; --color-border-tertiary: #1e293b;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.2); --shadow-md: 0 4px 12px rgba(0,0,0,0.3); --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
   --accent-light: #312e81; --swap-bg: #422006; --swap-color: #fcd34d; --swap-border: #78350f; --swap-active-bg: #78350f;
   --cat-label-bg: #334155; --cat-label-color: #94a3b8; --search-bg: #334155;
-  --success-bg: #064e3b; --danger-bg: #450a0a; --info-bg: #1e3a5f;
+  --success-bg: #064e3b; --danger-bg: #450a0a;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-sans); font-size: 14px; background: var(--color-background-page); color: var(--color-text-primary); min-height: 100vh; transition: background 0.3s, color 0.3s; }
 .header { background: var(--gradient-primary); padding: 24px 20px 18px; text-align: center; color: #fff; position: relative; overflow: hidden; }
-.header::before { content: ''; position: absolute; top: -40%; left: -20%; width: 140%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.12) 0%, transparent 60%); pointer-events: none; }
-.header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; position: relative; }
-.header p { font-size: 13px; opacity: 0.85; margin-top: 4px; position: relative; }
-.theme-toggle { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.18); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; backdrop-filter: blur(4px); }
+.header h1 { font-size: 22px; font-weight: 700; }
+.header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+.theme-toggle { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.18); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 18px; z-index: 10; }
 .theme-toggle:hover { background: rgba(255,255,255,0.3); }
 .app { max-width: 540px; margin: 0 auto; padding: 0 12px 100px; }
 .nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 16px 0 20px; background: var(--color-background-primary); border-radius: var(--border-radius-lg); padding: 5px; box-shadow: var(--shadow-sm); border: 1px solid var(--color-border-tertiary); }
-.nav-btn { padding: 10px; border: none; border-radius: var(--border-radius-md); background: transparent; cursor: pointer; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); font-family: var(--font-sans); transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.nav-btn { padding: 10px 4px; border: none; border-radius: var(--border-radius-md); background: transparent; cursor: pointer; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); font-family: var(--font-sans); transition: all 0.2s; }
 .nav-btn:hover { background: var(--color-background-secondary); }
 .nav-btn.active { background: var(--gradient-primary); color: #fff; box-shadow: 0 2px 8px rgba(99,102,241,0.35); }
-.nav-btn i { font-size: 15px; }
 .screen { display: none; }
 .screen.on { display: block; animation: fadeIn 0.25s ease; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
-.card { background: var(--color-background-primary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px 18px; margin-bottom: 12px; box-shadow: var(--shadow-sm); transition: box-shadow 0.2s, background 0.3s, border-color 0.3s; }
-.card:hover { box-shadow: var(--shadow-md); }
+.card { background: var(--color-background-primary); border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px 18px; margin-bottom: 12px; box-shadow: var(--shadow-sm); }
 .card-title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 8px; flex-wrap: wrap; }
-.card-title { font-size: 15px; font-weight: 600; color: var(--color-text-primary); display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+.card-title { font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
 .card-title .exercise-num { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; width: 24px; height: 24px; background: var(--accent-light); color: var(--accent); border-radius: 8px; font-size: 12px; font-weight: 700; flex-shrink: 0; }
 .exercise-name-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.swap-btn { display: flex; align-items: center; gap: 4px; padding: 5px 10px; border: 1.5px solid var(--swap-border); border-radius: 50px; background: var(--swap-bg); color: var(--swap-color); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+.swap-btn { padding: 5px 10px; border: 1.5px solid var(--swap-border); border-radius: 50px; background: var(--swap-bg); color: var(--swap-color); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); white-space: nowrap; }
 .swap-btn:hover { background: var(--swap-active-bg); }
-.swap-panel { display: none; background: var(--color-background-primary); border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-md); box-shadow: var(--shadow-lg); margin-bottom: 12px; overflow: hidden; animation: fadeIn 0.2s ease; max-height: 380px; overflow-y: auto; }
+.swap-panel { display: none; background: var(--color-background-primary); border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-md); box-shadow: var(--shadow-lg); margin-bottom: 12px; overflow: hidden; max-height: 380px; overflow-y: auto; }
 .swap-panel.open { display: block; }
 .swap-search-wrap { padding: 8px 10px; border-bottom: 1px solid var(--color-border-tertiary); position: sticky; top: 0; background: var(--color-background-primary); z-index: 2; }
-.swap-search { width: 100%; padding: 8px 10px 8px 32px; border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-sm); background: var(--search-bg); color: var(--color-text-primary); font-size: 12px; font-family: var(--font-sans); }
-.swap-search-wrap .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--color-text-tertiary); }
-.swap-cat-label { padding: 6px 14px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--cat-label-color); background: var(--cat-label-bg); border-bottom: 1px solid var(--color-border-tertiary); position: sticky; top: 47px; z-index: 1; }
-.swap-option { display: flex; align-items: center; gap: 8px; width: 100%; padding: 9px 14px; border: none; background: transparent; color: var(--color-text-primary); font-size: 13px; font-family: var(--font-sans); cursor: pointer; text-align: left; transition: background 0.15s; }
+.swap-search { width: 100%; padding: 8px 10px; border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-sm); background: var(--search-bg); color: var(--color-text-primary); font-size: 12px; font-family: var(--font-sans); }
+.swap-cat-label { padding: 6px 14px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--cat-label-color); background: var(--cat-label-bg); border-bottom: 1px solid var(--color-border-tertiary); }
+.swap-option { display: flex; align-items: center; gap: 8px; width: 100%; padding: 9px 14px; border: none; background: transparent; color: var(--color-text-primary); font-size: 13px; font-family: var(--font-sans); cursor: pointer; text-align: left; }
 .swap-option:hover { background: var(--color-background-secondary); }
 .swap-option.selected { background: var(--accent-light); color: var(--accent); font-weight: 600; }
-.swap-option .swap-icon { font-size: 15px; color: var(--color-text-tertiary); width: 20px; text-align: center; flex-shrink: 0; }
-.swap-option.selected .swap-icon { color: var(--accent); }
-.swap-option .muscle-tag { margin-left: auto; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 50px; background: var(--color-background-secondary); color: var(--color-text-tertiary); white-space: nowrap; flex-shrink: 0; }
-.swap-option.selected .muscle-tag { background: rgba(99,102,241,0.15); color: var(--accent); }
+.swap-option .muscle-tag { margin-left: auto; font-size: 10px; padding: 2px 7px; border-radius: 50px; background: var(--color-background-secondary); color: var(--color-text-tertiary); }
 .row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
 .lbl { font-size: 12px; font-weight: 600; color: var(--color-text-secondary); min-width: 50px; text-transform: uppercase; letter-spacing: 0.5px; }
-input[type=number], input[type=date], input[type=text], textarea { padding: 8px 10px; border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-sm); background: var(--color-background-secondary); color: var(--color-text-primary); font-size: 13px; font-family: var(--font-sans); }
+input[type=number], input[type=date], input[type=text] { padding: 8px 10px; border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-sm); background: var(--color-background-secondary); color: var(--color-text-primary); font-size: 13px; font-family: var(--font-sans); }
 input[type=number] { width: 80px; text-align: center; }
-textarea { width: 100%; min-height: 110px; resize: vertical; }
-input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
-.set-grid-hd { display: grid; grid-template-columns: 70px 1fr 1fr 1fr 32px; gap: 6px; margin-bottom: 6px; padding: 0 2px; }
-.set-row { display: grid; grid-template-columns: 70px 1fr 1fr 1fr 32px; gap: 6px; align-items: center; margin-bottom: 6px; padding: 4px 2px; border-radius: var(--border-radius-sm); transition: background 0.15s; }
+input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+.set-grid-hd, .set-row { display: grid; grid-template-columns: 70px 1fr 1fr 1fr 32px; gap: 6px; }
+.set-grid-hd { margin-bottom: 6px; padding: 0 2px; }
+.set-row { align-items: center; margin-bottom: 6px; padding: 4px 2px; border-radius: var(--border-radius-sm); }
 .set-row:hover { background: var(--color-background-secondary); }
 .set-lbl { font-size: 11px; color: var(--color-text-secondary); font-weight: 500; }
 .col-hd { font-size: 10px; color: var(--color-text-tertiary); text-align: center; text-transform: uppercase; letter-spacing: 0.6px; font-weight: 600; }
-.del-btn { background: transparent; border: none; cursor: pointer; color: var(--color-text-tertiary); font-size: 16px; padding: 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+.del-btn { background: transparent; border: none; cursor: pointer; color: var(--color-text-tertiary); font-size: 14px; padding: 4px; border-radius: 6px; }
 .del-btn:hover { color: var(--color-text-danger); background: var(--danger-bg); }
 .add-set-btn, .tool-btn, .secondary-btn, .danger-btn { font-size: 12px; font-weight: 600; border-radius: var(--border-radius-sm); padding: 10px 12px; cursor: pointer; font-family: var(--font-sans); display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--color-border-secondary); }
 .add-set-btn { color: var(--accent); background: var(--accent-light); border: 1.5px dashed rgba(99,102,241,0.3); width: 100%; margin-top: 6px; }
-.add-set-btn:hover { background: #e0e7ff; }
-.tool-btn { background: var(--gradient-primary); color: #fff; border: none; box-shadow: 0 4px 14px rgba(99,102,241,0.2); }
+.tool-btn { background: var(--gradient-primary); color: #fff; border: none; }
 .secondary-btn { background: var(--color-background-secondary); color: var(--color-text-primary); }
 .danger-btn { background: var(--danger-bg); color: var(--color-text-danger); border-color: rgba(239,68,68,0.2); }
-.save-btn { width: 100%; padding: 14px; border: none; border-radius: var(--border-radius-md); background: var(--gradient-primary); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; font-family: var(--font-sans); box-shadow: 0 4px 14px rgba(99,102,241,0.3); display: flex; align-items: center; justify-content: center; gap: 8px; }
+.save-btn { width: 100%; padding: 14px; border: none; border-radius: var(--border-radius-md); background: var(--gradient-primary); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; font-family: var(--font-sans); }
 .day-tabs { display: flex; gap: 6px; }
-.day-tab { padding: 7px 18px; border: 1.5px solid var(--color-border-secondary); border-radius: 50px; background: transparent; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--color-text-secondary); font-family: var(--font-sans); }
+.day-tab { padding: 7px 18px; border: 1.5px solid var(--color-border-secondary); border-radius: 50px; background: transparent; cursor: pointer; font-size: 13px; color: var(--color-text-secondary); font-family: var(--font-sans); }
 .day-tab.active { background: var(--accent-light); color: var(--accent); border-color: var(--accent); font-weight: 600; }
 .stat-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 16px; }
-.stat { background: var(--color-background-primary); border-radius: var(--border-radius-md); padding: 16px; border: 1px solid var(--color-border-tertiary); box-shadow: var(--shadow-sm); text-align: center; }
+.stat { background: var(--color-background-primary); border-radius: var(--border-radius-md); padding: 16px; border: 1px solid var(--color-border-tertiary); text-align: center; }
 .stat-lbl { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-.stat-val { font-size: 28px; font-weight: 700; color: var(--color-text-primary); }
+.stat-val { font-size: 28px; font-weight: 700; }
 .stat:first-child { grid-column: span 2; background: var(--gradient-primary); }
 .stat:first-child .stat-lbl { color: rgba(255,255,255,0.8); }
 .stat:first-child .stat-val { color: #fff; font-size: 36px; }
@@ -108,12 +96,12 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
 .leg-dot { width: 12px; height: 12px; border-radius: 4px; }
 .chart-wrap { position: relative; width: 100%; height: 260px; margin-top: 8px; }
 .empty { font-size: 14px; color: var(--color-text-tertiary); padding: 3rem 0; text-align: center; line-height: 1.7; }
-.empty i { font-size: 40px; display: block; margin-bottom: 10px; color: var(--color-border-secondary); }
+.empty-icon { font-size: 40px; display: block; margin-bottom: 10px; }
 #save-msg { text-align: center; font-size: 13px; font-weight: 600; color: var(--color-text-success); margin-top: 10px; min-height: 22px; }
 .section-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
 .muted { color: var(--color-text-secondary); font-size: 12px; line-height: 1.6; }
-.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tool-grid, .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tool-grid { margin-top: 12px; }
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
 .field label { font-size: 11px; font-weight: 700; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
 .field.full { grid-column: 1 / -1; }
@@ -122,68 +110,62 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
 .status-line { margin-top: 10px; padding: 10px 12px; border-radius: var(--border-radius-sm); background: var(--color-background-secondary); color: var(--color-text-secondary); font-size: 12px; line-height: 1.5; }
 .connected { color: var(--color-text-success); }
 .disconnected { color: var(--color-text-danger); }
-.connected-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: currentColor; margin-right: 6px; }
 .tip-list { margin-top: 10px; padding-left: 18px; color: var(--color-text-secondary); font-size: 12px; line-height: 1.65; }
 .tip-list li { margin-bottom: 4px; }
 .inline-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
 .hidden { display: none !important; }
-.status-badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 50px; text-align: center; text-transform: uppercase; letter-spacing: 0.4px; }
+.status-badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 50px; text-align: center; }
 .badge-up { background: var(--success-bg); color: var(--color-text-success); }
 .badge-same { background: var(--color-background-secondary); color: var(--color-text-tertiary); }
 .badge-down { background: var(--danger-bg); color: var(--color-text-danger); }
-.card-actions { display: flex; gap: 6px; flex-shrink: 0; align-items: center; flex-wrap: wrap; }
-.save-ex-btn { display: flex; align-items: center; gap: 4px; padding: 5px 10px; border: 1.5px solid #16a34a; border-radius: 50px; background: var(--success-bg); color: var(--color-text-success); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); transition: all 0.2s; white-space: nowrap; }
-.save-ex-btn:hover { background: #d1fae5; }
-.save-ex-btn.saved { background: #16a34a; color: #fff; border-color: #16a34a; transform: scale(1.05); }
-.delete-ex-btn { display: flex; align-items: center; gap: 4px; padding: 5px 10px; border: 1.5px solid #ef4444; border-radius: 50px; background: var(--danger-bg); color: var(--color-text-danger); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); transition: all 0.2s; white-space: nowrap; }
-.delete-ex-btn:hover { background: #fecaca; }
+.card-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.save-ex-btn { padding: 5px 10px; border: 1.5px solid #16a34a; border-radius: 50px; background: var(--success-bg); color: var(--color-text-success); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); }
+.save-ex-btn.saved { background: #16a34a; color: #fff; }
+.delete-ex-btn { padding: 5px 10px; border: 1.5px solid #ef4444; border-radius: 50px; background: var(--danger-bg); color: var(--color-text-danger); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--font-sans); }
 .ex-save-msg { font-size: 11px; color: var(--color-text-success); margin-top: 8px; min-height: 14px; font-weight: 500; text-align: right; }
 .ex-save-msg.warn { color: var(--color-text-danger); }
-.history-entry { padding: 14px 16px; margin-bottom: 8px; background: var(--color-background-primary); border-radius: var(--border-radius-md); border: 1px solid var(--color-border-tertiary); box-shadow: var(--shadow-sm); cursor: pointer; transition: box-shadow 0.2s, border-color 0.2s; }
-.history-entry:hover { box-shadow: var(--shadow-md); border-color: var(--color-border-secondary); }
-.history-entry.expanded { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(99,102,241,0.12); }
+.history-entry { padding: 14px 16px; margin-bottom: 8px; background: var(--color-background-primary); border-radius: var(--border-radius-md); border: 1px solid var(--color-border-tertiary); cursor: pointer; }
+.history-entry.expanded { border-color: var(--accent); }
 .history-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
 .history-head-main { flex: 1; min-width: 0; }
-.h-date { font-size: 11px; color: var(--color-text-tertiary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; }
-.h-day { font-size: 15px; font-weight: 600; color: var(--color-text-primary); margin: 3px 0 8px; display: flex; align-items: center; gap: 6px; }
-.h-day .expand-chevron { font-size: 14px; color: var(--color-text-tertiary); transition: transform 0.2s; }
-.history-entry.expanded .h-day .expand-chevron { transform: rotate(90deg); color: var(--accent); }
+.h-date { font-size: 11px; color: var(--color-text-tertiary); font-weight: 500; text-transform: uppercase; }
+.h-day { font-size: 15px; font-weight: 600; margin: 3px 0 8px; }
 .h-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-.pill { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 50px; background: var(--color-background-secondary); color: var(--color-text-secondary); border: 1px solid var(--color-border-tertiary); }
-.history-del-session { background: transparent; border: 1.5px solid var(--color-border-secondary); color: var(--color-text-tertiary); cursor: pointer; padding: 6px 8px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: all 0.2s; flex-shrink: 0; }
+.pill { font-size: 11px; padding: 4px 10px; border-radius: 50px; background: var(--color-background-secondary); color: var(--color-text-secondary); border: 1px solid var(--color-border-tertiary); }
+.history-del-session { background: transparent; border: 1.5px solid var(--color-border-secondary); color: var(--color-text-tertiary); cursor: pointer; padding: 6px 10px; border-radius: 50px; font-size: 12px; }
 .history-del-session:hover { border-color: #ef4444; background: var(--danger-bg); color: var(--color-text-danger); }
-.history-detail { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--color-border-secondary); animation: fadeIn 0.25s ease; }
+.history-detail { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--color-border-secondary); }
 .history-entry.expanded .history-detail { display: block; }
 .history-ex-block { background: var(--color-background-secondary); border-radius: var(--border-radius-sm); padding: 10px 12px; margin-bottom: 8px; }
 .history-ex-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 8px; }
-.history-ex-name { font-size: 13px; font-weight: 600; color: var(--color-text-primary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.history-ex-del { background: transparent; border: 1px solid var(--color-border-secondary); color: var(--color-text-tertiary); cursor: pointer; padding: 3px 8px; border-radius: 50px; font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s; flex-shrink: 0; font-family: var(--font-sans); }
+.history-ex-name { font-size: 13px; font-weight: 600; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.history-ex-del { background: transparent; border: 1px solid var(--color-border-secondary); color: var(--color-text-tertiary); cursor: pointer; padding: 3px 8px; border-radius: 50px; font-size: 10px; font-weight: 600; font-family: var(--font-sans); }
 .history-ex-del:hover { background: var(--danger-bg); border-color: #ef4444; color: var(--color-text-danger); }
 .history-set-list { display: flex; flex-wrap: wrap; gap: 4px; }
-.history-set-pill { font-size: 11px; padding: 3px 8px; border-radius: 50px; background: var(--color-background-primary); border: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace; }
+.history-set-pill { font-size: 11px; padding: 3px 8px; border-radius: 50px; background: var(--color-background-primary); border: 1px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
 @media (max-width: 520px) { .field-grid, .tool-grid { grid-template-columns: 1fr; } .nav { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
 <body>
 <div class="header">
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><i class="ti ti-moon" id="theme-icon"></i></button>
-  <h1>&#127947; PPL Training Tracker</h1>
-  <p>Push &middot; Pull &middot; Legs &mdash; v5.1 with full edit/delete</p>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="theme-icon">🌙</span></button>
+  <h1>🏋️ PPL Training Tracker</h1>
+  <p>Push · Pull · Legs — v5.2 with full edit/delete</p>
 </div>
 
 <div class="app">
   <div class="nav">
-    <button class="nav-btn active" onclick="goTo('log', event)"><i class="ti ti-plus"></i> Log</button>
-    <button class="nav-btn" onclick="goTo('progress', event)"><i class="ti ti-chart-line"></i> Progress</button>
-    <button class="nav-btn" onclick="goTo('history', event)"><i class="ti ti-calendar"></i> History</button>
-    <button class="nav-btn" onclick="goTo('data', event)"><i class="ti ti-database"></i> Data</button>
+    <button class="nav-btn active" onclick="goTo('log', event)">➕ Log</button>
+    <button class="nav-btn" onclick="goTo('progress', event)">📈 Progress</button>
+    <button class="nav-btn" onclick="goTo('history', event)">📅 History</button>
+    <button class="nav-btn" onclick="goTo('data', event)">💾 Data</button>
   </div>
 
   <div class="screen on" id="sc-log">
     <div class="card" style="margin-bottom:12px">
       <div class="row" style="margin-bottom:0">
         <span class="lbl">Day</span>
-        <div class="day-tabs" id="day-tabs">
+        <div class="day-tabs">
           <button class="day-tab active" data-day="Pull" onclick="selectDay(this)">Pull</button>
           <button class="day-tab" data-day="Push" onclick="selectDay(this)">Push</button>
           <button class="day-tab" data-day="Legs" onclick="selectDay(this)">Legs</button>
@@ -195,7 +177,7 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
       </div>
     </div>
     <div id="exercises-log"></div>
-    <button class="save-btn" onclick="saveSession()"><i class="ti ti-device-floppy"></i> Save Session</button>
+    <button class="save-btn" onclick="saveSession()">💾 Save Session</button>
     <div id="save-msg"></div>
   </div>
 
@@ -203,7 +185,7 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
     <div class="stat-grid" id="stats-grid"></div>
     <div class="card">
       <select class="ex-select" id="prog-ex" onchange="renderChart()">
-        <option value="">&mdash; Select exercise &mdash;</option>
+        <option value="">— Select exercise —</option>
       </select>
       <div class="legend">
         <span><span class="leg-dot" style="background:#6366f1"></span>Top weight (kg)</span>
@@ -220,58 +202,62 @@ input[type=number]:focus, input[type=date]:focus, input[type=text]:focus, textar
   <div class="screen" id="sc-data">
     <div class="card">
       <div class="section-title">Local backup tools</div>
-      <div class="muted">Use this to keep a safe copy of your workouts, move data between iPhone and desktop, or reset local browser data.</div>
+      <div class="muted">Keep a safe copy of your workouts, move data between iPhone and desktop, or reset local browser data.</div>
       <div class="tool-grid">
-        <button class="tool-btn" onclick="exportData()"><i class="ti ti-download"></i> Export JSON</button>
-        <button class="secondary-btn" onclick="document.getElementById('import-file').click()"><i class="ti ti-upload"></i> Import JSON</button>
-        <button class="danger-btn" onclick="clearAllData()"><i class="ti ti-trash"></i> Clear Local Data</button>
-        <button class="secondary-btn" onclick="refreshDataScreen()"><i class="ti ti-refresh"></i> Refresh Status</button>
+        <button class="tool-btn" onclick="exportData()">⬇ Export JSON</button>
+        <button class="secondary-btn" onclick="document.getElementById('import-file').click()">⬆ Import JSON</button>
+        <button class="danger-btn" onclick="clearAllData()">🗑 Clear Local Data</button>
+        <button class="secondary-btn" onclick="refreshDataScreen()">↻ Refresh Status</button>
       </div>
       <input id="import-file" class="hidden" type="file" accept="application/json,.json" onchange="importData(event)">
       <div class="status-line" id="local-status"></div>
-      <ul class="tip-list">
-        <li>Export on one device, then import the JSON file on another device if you want a manual backup or one-time transfer.</li>
-        <li>Local data is stored in your current browser only.</li>
-      </ul>
     </div>
 
     <div class="card">
       <div class="section-title">Cloud sync (Firebase Realtime Database)</div>
-      <div class="muted">Fill in your Firebase web app config + database URL. Once connected, this app can push local changes to the cloud and receive remote updates from your other devices.</div>
+      <div class="muted">Fill in your Firebase config. Once connected, this app can push local changes to the cloud and receive remote updates from your other devices.</div>
       <div class="field-grid" style="margin-top:12px">
         <div class="field"><label>API Key</label><input type="text" id="cfg-apiKey" placeholder="AIza..."></div>
-        <div class="field"><label>Auth Domain</label><input type="text" id="cfg-authDomain" placeholder="your-project.firebaseapp.com"></div>
-        <div class="field"><label>Project ID</label><input type="text" id="cfg-projectId" placeholder="your-project-id"></div>
-        <div class="field"><label>Database URL</label><input type="text" id="cfg-databaseURL" placeholder="https://your-project-default-rtdb.firebaseio.com"></div>
-        <div class="field"><label>Storage Bucket</label><input type="text" id="cfg-storageBucket" placeholder="your-project.firebasestorage.app"></div>
-        <div class="field"><label>Messaging Sender ID</label><input type="text" id="cfg-messagingSenderId" placeholder="1234567890"></div>
-        <div class="field full"><label>App ID</label><input type="text" id="cfg-appId" placeholder="1:1234567890:web:abcdef"></div>
-        <div class="field full"><label>Sync Key (shared across devices)</label><input type="text" id="cfg-syncKey" placeholder="example: vittawit-gym-main"></div>
+        <div class="field"><label>Auth Domain</label><input type="text" id="cfg-authDomain"></div>
+        <div class="field"><label>Project ID</label><input type="text" id="cfg-projectId"></div>
+        <div class="field"><label>Database URL</label><input type="text" id="cfg-databaseURL"></div>
+        <div class="field"><label>Storage Bucket</label><input type="text" id="cfg-storageBucket"></div>
+        <div class="field"><label>Messaging Sender ID</label><input type="text" id="cfg-messagingSenderId"></div>
+        <div class="field full"><label>App ID</label><input type="text" id="cfg-appId"></div>
+        <div class="field full"><label>Sync Key (shared across devices)</label><input type="text" id="cfg-syncKey"></div>
       </div>
       <div class="checkbox-row">
         <input type="checkbox" id="auto-sync-toggle" onchange="handleAutoSyncToggle()">
         <label for="auto-sync-toggle" class="muted" style="font-size:12px">Auto-push local changes after save / import / clear / delete</label>
       </div>
       <div class="inline-actions">
-        <button class="secondary-btn" onclick="saveCloudConfig()"><i class="ti ti-device-floppy"></i> Save Cloud Config</button>
-        <button class="tool-btn" onclick="connectCloud()"><i class="ti ti-plug-connected"></i> Connect Cloud</button>
-        <button class="secondary-btn" onclick="pushCloud()"><i class="ti ti-cloud-upload"></i> Push Local &rarr; Cloud</button>
-        <button class="secondary-btn" onclick="pullCloud()"><i class="ti ti-cloud-download"></i> Pull Cloud &rarr; Local</button>
+        <button class="secondary-btn" onclick="saveCloudConfig()">💾 Save Cloud Config</button>
+        <button class="tool-btn" onclick="connectCloud()">🔌 Connect Cloud</button>
+        <button class="secondary-btn" onclick="pushCloud()">☁ Push → Cloud</button>
+        <button class="secondary-btn" onclick="pullCloud()">☁ Pull → Local</button>
       </div>
       <div class="status-line" id="cloud-status"></div>
       <ul class="tip-list">
         <li>Use the same <strong>Sync Key</strong> on iPhone and desktop to point both devices to the same dataset.</li>
-        <li>After connecting, remote updates from another device can be applied automatically while this page is open.</li>
       </ul>
     </div>
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
+// ============= Load Chart.js dynamically (avoid URL strip) =============
+(function loadChartJs() {
+  var s = document.createElement('script');
+  var u1 = 'https://cdnjs.cloudflare.com';
+  var u2 = '/ajax/libs/Chart.js/4.4.1/chart.umd.js';
+  s.src = u1 + u2;
+  s.onload = function(){ window._chartReady = true; if (window._pendingChart) renderChart(); };
+  document.head.appendChild(s);
+})();
+
 const EXERCISE_POOL = {
   Pull: {
-    Back: ['Deadlift','Barbell Deadlift','Trap-Bar Deadlift','Sumo Deadlift','Rack Pull','Lat Pulldown (Wide)','Lat Pulldown (Close)','Lat Pulldown (Neutral)','Pull-Up (BW)','Chin-Up (BW)','Assisted Pull-Up Machine','Seated Row (Cable)','Seated Row (Machine)','T-Bar Row','Barbell Bent-Over Row','Dumbbell Row (Single-Arm)','Pendlay Row','Cable Straight-Arm Pulldown','Meadows Row','Chest-Supported Row','Inverted Row (BW)','Cable Pull-Through','Hyperextension / Back Extension'],
+    Back: ['Deadlift','Barbell Deadlift','Trap-Bar Deadlift','Sumo Deadlift','Rack Pull','Lat Pulldown (Wide)','Lat Pulldown (Close)','Lat Pulldown (Neutral)','Pull-Up (BW)','Chin-Up (BW)','Assisted Pull-Up Machine','Seated Row (Cable)','Seated Row (Machine)','T-Bar Row','Barbell Bent-Over Row','Dumbbell Row (Single-Arm)','Pendlay Row','Cable Straight-Arm Pulldown','Meadows Row','Chest-Supported Row','Inverted Row (BW)','Cable Pull-Through','Hyperextension'],
     'Rear Delt': ['Face Pull (Seated)','Face Pull (Standing)','Reverse Pec Deck','Rear Delt Fly (DB)','Band Pull-Apart','Cable Reverse Fly','Incline Rear Delt Raise'],
     Biceps: ['Biceps Curl (Cable)','EZ-Bar Curl','Barbell Curl','Dumbbell Curl','Hammer Curl (DB)','Rope Cable Curl','Preacher Curl (Machine)','Preacher Curl (EZ-Bar)','Incline Dumbbell Curl','Concentration Curl','Spider Curl','Cross-Body Hammer Curl','Cable Bayesian Curl','Reverse Curl (EZ-Bar)'],
     Abs: ['Abs Crunch Machine','Cable Crunch','Hanging Leg Raise','Hanging Knee Raise','Ab Roller','Decline Sit-Up','Plank','Russian Twist','Bicycle Crunch','Dragon Flag','Pallof Press (Cable)','Woodchop (Cable)','V-Up','Toe Touch Crunch']
@@ -320,7 +306,7 @@ const EXERCISES = {
   ]
 };
 
-const APP_VERSION = 'v5.1';
+const APP_VERSION = 'v5.2';
 const APP_PREFIX = 'ppl_tracker_' + (location.pathname.replace(/[^a-z0-9]/gi, '_') || 'root') + '_';
 const STORAGE_KEYS = {
   sessions: APP_PREFIX + 'sessions',
@@ -349,12 +335,12 @@ function loadData() { try { const raw = localStorage.getItem(STORAGE_KEYS.sessio
 function saveData() { try { localStorage.setItem(STORAGE_KEYS.sessions, JSON.stringify(sessions)); } catch(e) {} }
 function loadTheme() {
   const saved = localStorage.getItem(STORAGE_KEYS.theme) || localStorage.getItem('ppl_theme');
-  if (saved === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); document.getElementById('theme-icon').className = 'ti ti-sun'; }
+  if (saved === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); document.getElementById('theme-icon').textContent = '☀️'; }
 }
 function toggleTheme() {
   const html = document.documentElement; const icon = document.getElementById('theme-icon');
-  if (html.getAttribute('data-theme') === 'dark') { html.removeAttribute('data-theme'); icon.className = 'ti ti-moon'; localStorage.setItem(STORAGE_KEYS.theme, 'light'); }
-  else { html.setAttribute('data-theme', 'dark'); icon.className = 'ti ti-sun'; localStorage.setItem(STORAGE_KEYS.theme, 'dark'); }
+  if (html.getAttribute('data-theme') === 'dark') { html.removeAttribute('data-theme'); icon.textContent = '🌙'; localStorage.setItem(STORAGE_KEYS.theme, 'light'); }
+  else { html.setAttribute('data-theme', 'dark'); icon.textContent = '☀️'; localStorage.setItem(STORAGE_KEYS.theme, 'dark'); }
 }
 function selectDay(btn) {
   document.querySelectorAll('.day-tab').forEach(b => b.classList.remove('active'));
@@ -362,22 +348,23 @@ function selectDay(btn) {
 }
 function getActiveExName(ei) { const key = currentDay + '-' + ei; return selectedAlts[key] || EXERCISES[currentDay][ei].name; }
 function escapeHtml(text) { return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
-function buildOptionHTML(ei, exName, activeName, iconClass, muscle) {
+
+function buildOptionHTML(ei, exName, activeName, isDefault, muscle) {
   const isSel = exName === activeName; const safeName = escapeHtml(exName); const safeMuscle = muscle ? escapeHtml(muscle) : '';
+  const icon = isDefault ? '⭐' : '🏋️';
   const jsArg = JSON.stringify(exName).replace(/"/g, '&quot;');
   return '<button class="swap-option' + (isSel ? ' selected' : '') + '" data-name="' + safeName + '" onclick="selectAlt(' + ei + ', ' + jsArg + ')">'
-    + '<span class="swap-icon"><i class="ti ' + iconClass + '"></i></span>' + safeName
+    + '<span style="width:20px;text-align:center">' + icon + '</span>' + safeName
     + (muscle ? '<span class="muscle-tag">' + safeMuscle + '</span>' : '') + '</button>';
 }
 function buildSwapHTML(ei) {
   const pool = EXERCISE_POOL[currentDay]; const activeName = getActiveExName(ei); const defaultName = EXERCISES[currentDay][ei].name;
-  let html = '<div class="swap-search-wrap"><i class="ti ti-search search-icon"></i>';
-  html += '<input class="swap-search" type="text" placeholder="Search exercises..." oninput="filterSwap(' + ei + ', this.value)"></div>';
+  let html = '<div class="swap-search-wrap"><input class="swap-search" type="text" placeholder="Search exercises..." oninput="filterSwap(' + ei + ', this.value)"></div>';
   html += '<div class="swap-cat-label">Your Default</div>';
-  html += buildOptionHTML(ei, defaultName, activeName, 'ti-star', '');
+  html += buildOptionHTML(ei, defaultName, activeName, true, '');
   for (const cat in pool) {
     html += '<div class="swap-cat-label">' + cat.toUpperCase() + '</div>';
-    pool[cat].forEach(exName => { if (exName === defaultName) return; html += buildOptionHTML(ei, exName, activeName, 'ti-barbell', cat); });
+    pool[cat].forEach(exName => { if (exName === defaultName) return; html += buildOptionHTML(ei, exName, activeName, false, cat); });
   }
   return html;
 }
@@ -409,15 +396,15 @@ function renderLogExercises() {
       '<div class="card-title-row">' +
         '<div class="card-title"><span class="exercise-num">' + (ei+1) + '</span><span class="exercise-name-text" id="ex-name-' + ei + '">' + escapeHtml(activeName) + '</span></div>' +
         '<div class="card-actions">' +
-          '<button class="swap-btn" onclick="toggleSwap(' + ei + ')"><i class="ti ti-arrows-exchange"></i> Swap</button>' +
-          '<button class="save-ex-btn" id="save-ex-btn-' + ei + '" onclick="saveExercise(' + ei + ')" title="Save this exercise only"><i class="ti ti-device-floppy"></i> Save</button>' +
-          '<button class="delete-ex-btn" onclick="deleteExerciseFromCard(' + ei + ')" title="Remove this exercise from session or reset inputs"><i class="ti ti-trash"></i></button>' +
+          '<button class="swap-btn" onclick="toggleSwap(' + ei + ')">⇄ Swap</button>' +
+          '<button class="save-ex-btn" id="save-ex-btn-' + ei + '" onclick="saveExercise(' + ei + ')">💾 Save</button>' +
+          '<button class="delete-ex-btn" onclick="deleteExerciseFromCard(' + ei + ')">🗑</button>' +
         '</div>' +
       '</div>' +
       '<div class="swap-panel" id="swap-panel-' + ei + '">' + buildSwapHTML(ei) + '</div>' +
       '<div class="set-grid-hd"><span class="col-hd"></span><span class="col-hd">Weight</span><span class="col-hd">Reps</span><span class="col-hd">Status</span><span></span></div>' +
       '<div id="sets-' + ei + '"></div>' +
-      '<button class="add-set-btn" onclick="addSet(' + ei + ')"><i class="ti ti-plus"></i> Add set</button>' +
+      '<button class="add-set-btn" onclick="addSet(' + ei + ')">➕ Add set</button>' +
       '<div class="ex-save-msg" id="ex-save-msg-' + ei + '"></div>';
     wrap.appendChild(card);
     ex.sets.forEach((s, si) => addSetRow(ei, si, s.label, s.kg, s.reps));
@@ -430,7 +417,7 @@ function addSetRow(ei, si, label, kg, reps) {
     '<input type="number" id="kg-' + ei + '-' + si + '" value="' + kg + '" min="0" step="0.5" oninput="updateStatus(' + ei + ',' + si + ')">' +
     '<input type="number" id="reps-' + ei + '-' + si + '" value="' + reps + '" min="0" step="1" oninput="updateStatus(' + ei + ',' + si + ')">' +
     '<span id="status-' + ei + '-' + si + '" class="status-badge badge-same">same</span>' +
-    '<button class="del-btn" onclick="deleteSetRow(' + ei + ',' + si + ')" aria-label="Delete set"><i class="ti ti-x"></i></button>';
+    '<button class="del-btn" onclick="deleteSetRow(' + ei + ',' + si + ')">✕</button>';
   container.appendChild(row); updateStatus(ei, si);
 }
 function addSet(ei) {
@@ -447,7 +434,7 @@ function updateStatus(ei, si) {
   if (!prev || prev.length <= si) { statusEl.textContent = 'new'; statusEl.className = 'status-badge badge-same'; return; }
   const prevKg = prev[si] ? prev[si].kg : 0;
   if (curKg > prevKg) { statusEl.textContent = 'PR'; statusEl.className = 'status-badge badge-up'; }
-  else if (curKg < prevKg) { statusEl.textContent = 'lower'; statusEl.className = 'status-badge badge-down'; }
+  else if (curKg < prevKg) { statusEl.textContent = 'low'; statusEl.className = 'status-badge badge-down'; }
   else { statusEl.textContent = 'same'; statusEl.className = 'status-badge badge-same'; }
 }
 
@@ -471,7 +458,6 @@ function showExSaveMsg(ei, text, isWarn) {
   el.textContent = text; el.classList.toggle('warn', !!isWarn);
   setTimeout(() => { if (el.textContent === text) el.textContent = ''; }, 2600);
 }
-
 async function saveExercise(ei) {
   const date = document.getElementById('session-date').value || new Date().toISOString().slice(0, 10);
   const activeName = getActiveExName(ei); const sets = collectExerciseSets(ei);
@@ -479,20 +465,18 @@ async function saveExercise(ei) {
   const partial = {}; partial[activeName] = sets;
   upsertSession(date, currentDay, partial);
   const btn = document.getElementById('save-ex-btn-' + ei);
-  if (btn) { btn.classList.add('saved'); btn.innerHTML = '<i class="ti ti-check"></i> Saved'; setTimeout(() => { btn.classList.remove('saved'); btn.innerHTML = '<i class="ti ti-device-floppy"></i> Save'; }, 1800); }
-  showExSaveMsg(ei, activeName + ' saved (' + sets.length + ' set' + (sets.length > 1 ? 's' : '') + ')');
+  if (btn) { btn.classList.add('saved'); btn.innerHTML = '✓ Saved'; setTimeout(() => { btn.classList.remove('saved'); btn.innerHTML = '💾 Save'; }, 1800); }
+  showExSaveMsg(ei, activeName + ' saved (' + sets.length + ' sets)');
   populateProgressSelect(); renderStats();
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
-
 async function deleteExerciseFromCard(ei) {
   const date = document.getElementById('session-date').value || new Date().toISOString().slice(0, 10);
   const activeName = getActiveExName(ei);
   const sessionIdx = sessions.findIndex(s => s.date === date && s.day === currentDay);
   const isSaved = sessionIdx !== -1 && sessions[sessionIdx].exercises && sessions[sessionIdx].exercises[activeName];
   if (isSaved) {
-    const ok = confirm('Remove "' + activeName + '" from session on ' + date + ' (' + currentDay + ')?');
-    if (!ok) return;
+    if (!confirm('Remove "' + activeName + '" from session on ' + date + '?')) return;
     delete sessions[sessionIdx].exercises[activeName];
     if (!Object.keys(sessions[sessionIdx].exercises).length) sessions.splice(sessionIdx, 1);
     saveData();
@@ -507,10 +491,8 @@ async function deleteExerciseFromCard(ei) {
 function resetExerciseInputs(ei) {
   const container = document.getElementById('sets-' + ei); if (!container) return;
   container.innerHTML = '';
-  const ex = EXERCISES[currentDay][ei];
-  ex.sets.forEach((s, si) => addSetRow(ei, si, s.label, s.kg, s.reps));
+  EXERCISES[currentDay][ei].sets.forEach((s, si) => addSetRow(ei, si, s.label, s.kg, s.reps));
 }
-
 async function saveSession() {
   const date = document.getElementById('session-date').value || new Date().toISOString().slice(0, 10);
   const exs = EXERCISES[currentDay]; const exerciseData = {}; let totalSets = 0;
@@ -524,14 +506,13 @@ async function saveSession() {
   populateProgressSelect(); renderStats();
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
-
 function showSaveMsg(text) {
   const msg = document.getElementById('save-msg'); msg.textContent = text;
   setTimeout(() => { if (msg.textContent === text) msg.textContent = ''; }, 2600);
 }
 function populateProgressSelect() {
   const sel = document.getElementById('prog-ex'); const current = sel.value;
-  sel.innerHTML = '<option value="">-- Select exercise --</option>';
+  sel.innerHTML = '<option value="">— Select exercise —</option>';
   const allEx = new Set(); sessions.forEach(s => Object.keys(s.exercises || {}).forEach(k => allEx.add(k)));
   [...allEx].sort().forEach(ex => { const o = document.createElement('option'); o.value = ex; o.textContent = ex; sel.appendChild(o); });
   if (current) sel.value = current;
@@ -546,6 +527,7 @@ function renderStats() {
 }
 function renderChart() {
   const exName = document.getElementById('prog-ex').value; const canvas = document.getElementById('prog-chart');
+  if (!window._chartReady || !window.Chart) { window._pendingChart = true; return; }
   if (progChart) { progChart.destroy(); progChart = null; }
   if (!exName) return;
   const relevant = sessions.filter(s => s.exercises && s.exercises[exName]).map(s => {
@@ -554,19 +536,19 @@ function renderChart() {
   }).sort((a, b) => a.date.localeCompare(b.date));
   if (!relevant.length) return;
   const labels = relevant.map(r => r.date.slice(5));
-  progChart = new Chart(canvas, {
+  progChart = new window.Chart(canvas, {
     type: 'line',
     data: { labels, datasets: [
-      { label:'Top weight (kg)', data:relevant.map(r=>r.topWeight), borderColor:'#6366f1', backgroundColor:'rgba(99,102,241,0.1)', tension:0.4, pointRadius:5, pointBackgroundColor:'#6366f1', pointBorderColor:'#fff', pointBorderWidth:2, fill:true, yAxisID:'y' },
-      { label:'Volume (kg)', data:relevant.map(r=>Math.round(r.volume)), borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.1)', tension:0.4, pointRadius:5, pointBackgroundColor:'#10b981', pointBorderColor:'#fff', pointBorderWidth:2, borderDash:[5,3], fill:true, yAxisID:'y2' }
+      { label:'Top weight', data:relevant.map(r=>r.topWeight), borderColor:'#6366f1', backgroundColor:'rgba(99,102,241,0.1)', tension:0.4, pointRadius:5, fill:true, yAxisID:'y' },
+      { label:'Volume', data:relevant.map(r=>Math.round(r.volume)), borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.1)', tension:0.4, pointRadius:5, borderDash:[5,3], fill:true, yAxisID:'y2' }
     ]},
-    options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{ticks:{autoSkip:false,maxRotation:45,font:{size:11}},grid:{color:'rgba(148,163,184,0.1)'}}, y:{position:'left',title:{display:true,text:'kg (weight)',font:{size:11,weight:'600'}},ticks:{font:{size:11}},grid:{color:'rgba(148,163,184,0.1)'}}, y2:{position:'right',title:{display:true,text:'kg (volume)',font:{size:11,weight:'600'}},ticks:{font:{size:11}},grid:{drawOnChartArea:false}} } }
+    options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ y:{position:'left'}, y2:{position:'right',grid:{drawOnChartArea:false}} } }
   });
 }
 
 function renderHistory() {
   const wrap = document.getElementById('history-list');
-  if (!sessions.length) { wrap.innerHTML = '<div class="empty"><i class="ti ti-calendar-off"></i>No sessions logged yet.<br>Start by logging your first workout!</div>'; return; }
+  if (!sessions.length) { wrap.innerHTML = '<div class="empty"><span class="empty-icon">📅</span>No sessions logged yet.<br>Start by logging your first workout!</div>'; return; }
   wrap.innerHTML = '';
   const reversed = [...sessions].reverse();
   reversed.forEach(s => {
@@ -577,22 +559,26 @@ function renderHistory() {
 
     const div = document.createElement('div');
     div.className = 'history-entry' + (isExpanded ? ' expanded' : '');
-    div.setAttribute('data-key', sessionKey);
 
     let detailHtml = '<div class="history-detail">';
     exNames.forEach(exName => {
       const sets = s.exercises[exName];
-      const setPillsHtml = sets.map((st, i) => '<span class="history-set-pill">S' + (i+1) + ': ' + st.kg + 'kg x ' + st.reps + '</span>').join('');
+      const setPillsHtml = sets.map((st, i) => '<span class="history-set-pill">S' + (i+1) + ': ' + st.kg + 'kg × ' + st.reps + '</span>').join('');
       detailHtml += '<div class="history-ex-block">' +
         '<div class="history-ex-head">' +
           '<div class="history-ex-name">' + escapeHtml(exName) + '</div>' +
-          '<button class="history-ex-del" data-action="del-ex" data-date="' + s.date + '" data-day="' + s.day + '" data-ex="' + escapeHtand-chevron"></i>' + s.day + ' Day <span style="color:var(--color-text-tertiary);font-size:12px;font-weight:500">(' + exNames.length + ' exercises)</span></div>' +
-          '<div class="h-pills">' + topSets.map(t => '<span class="pill">' + t + '</span>').join('') + (exNames.length > 4 ? '<span class="pill">+' + (exNames.length-4) + ' more</span>' : '') + '</div>' +
+          '<button class="history-ex-del" data-action="del-ex" data-date="' + s.date + '" data-day="' + s.day + '" data-ex="' + escapeH/div>';
+    });
+    detailHtml += '</div>';
+
+    div.innerHTML =
+      '<div class="history-head">' +
+        'expand' +
+          '<div class="h-date">' + s.date + '</div>' +
+          '<div class="h-day">' + (isExpanded ? '▼' : '▶') + ' ' + s.day + ' Day <span style="color:var(--color-text-tertiary);font-size:12px;font-weight:500">(' + exNames.length + ' exercises)</span></div>' +
+          '<div class="h-pills">' + topSets.map(t => '<span class="pill">' + t + '</span>').join('') + (exNames.length > 4 ? '<span class="pill">+' + (exNames.length-4) + '</span>' : '') + '</div>' +
         '</div>' +
-        '<button class="history-del-session</i></button>' +
-      '</div>' +
-      detailHtml;
-    wrap.appendChild(div);
+        '<button class="history-del-session" data-action="del-session" data-date="'ndChild(div);
   });
 }
 function toggleHistoryExpand(sessionKey) {
@@ -601,8 +587,7 @@ function toggleHistoryExpand(sessionKey) {
   renderHistory();
 }
 async function deleteSession(date, day) {
-  const ok = confirm('Delete entire session: ' + day + ' Day on ' + date + '?\n\nThis cannot be undone (but cloud backup will still hold it until next sync).');
-  if (!ok) return;
+  if (!confirm('Delete entire session: ' + day + ' Day on ' + date + '?')) return;
   const idx = sessions.findIndex(s => s.date === date && s.day === day);
   if (idx === -1) return;
   sessions.splice(idx, 1); saveData();
@@ -612,8 +597,7 @@ async function deleteSession(date, day) {
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
 async function deleteExerciseFromHistory(date, day, exName) {
-  const ok = confirm('Remove "' + exName + '" from ' + day + ' Day on ' + date + '?');
-  if (!ok) return;
+  if (!confirm('Remove "' + exName + '" from ' + day + ' Day on ' + date + '?')) return;
   const idx = sessions.findIndex(s => s.date === date && s.day === day);
   if (idx === -1) return;
   if (sessions[idx].exercises) delete sessions[idx].exercises[exName];
@@ -626,24 +610,15 @@ async function deleteExerciseFromHistory(date, day, exName) {
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
 
-// Delegated event handler for history list (avoids inline-onclick quoting issues)
 document.addEventListener('click', function(e) {
   const exDelBtn = e.target.closest('[data-action="del-ex"]');
-  if (exDelBtn) {
-    e.stopPropagation();
-    deleteExerciseFromHistory(exDelBtn.dataset.date, exDelBtn.dataset.day, exDelBtn.dataset.ex);
-    return;
-  }
+  if (exDelBtn) { e.stopPropagation(); deleteExerciseFromHistory(exDelBtn.dataset.date, exDelBtn.dataset.day, exDelBtn.dataset.ex); return; }
   const sessionDelBtn = e.target.closest('[data-action="del-session"]');
-  if (sessionDelBtn) {
-    e.stopPropagation();
-    deleteSession(sessionDelBtn.dataset.date, sessionDelBtn.dataset.day);
-    return;
-  }
+  if (sessionDelBtn) { e.stopPropagation(); deleteSession(sessionDelBtn.dataset.date, sessionDelBtn.dataset.day); return; }
   const expandArea = e.target.closest('[data-action="expand"]');
-  if (expandArea) {
-    toggleHistoryExpand(expandArea.dataset.key);
-    return;
+  if (expandArea) { toggleHistoryExpand(expandArea.dataset.key); return; }
+  if (!e.target.closest('.swap-btn') && !e.target.closest('.swap-panel')) {
+    document.querySelectorAll('.swap-panel').forEach(d => d.classList.remove('open'));
   }
 });
 
@@ -668,8 +643,7 @@ function exportData() {
   const payload = { app: 'PPL Training Tracker', version: APP_VERSION, exportedAt: new Date().toISOString(), sessions: sessions };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob); const a = document.createElement('a');
-  const stamp = new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-');
-  a.href = url; a.download = 'ppl-tracker-backup-' + stamp + '.json';
+  a.href = url; a.download = 'ppl-tracker-backup-' + Date.now() + '.json';
   document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
   setLocalStatus('Backup exported successfully.');
 }
@@ -683,20 +657,19 @@ async function importData(event) {
     setLocalStatus('Import completed: ' + sessions.length + ' session(s) loaded.');
     showSaveMsg('Import completed');
     if (isAutoSyncEnabled()) await pushCloud(true);
-  } catch(err) { setLocalStatus('Import failed: ' + (err.message || 'Unable to read JSON'), true); }
+  } catch(err) { setLocalStatus('Import failed: ' + (err.message || 'Unable to read JSON')); }
   event.target.value = '';
 }
 async function clearAllData() {
-  const ok = confirm('Clear all locally saved workout data on this device? This cannot be undone.');
-  if (!ok) return;
+  if (!confirm('Clear all local data? This cannot be undone.')) return;
   sessions = []; expandedHistory.clear(); saveData(); rerenderAll();
   setLocalStatus('Local data cleared.'); showSaveMsg('Local data cleared');
   if (isAutoSyncEnabled()) await pushCloud(true);
 }
 function setLocalStatus(text) { const el = document.getElementById('local-status'); el.innerHTML = '<strong>Status:</strong> ' + text; }
 function refreshDataScreen() {
-  const localCount = sessions.length; const latest = sessions.length ? sessions[sessions.length - 1].date : 'No sessions yet';
-  setLocalStatus('This browser currently stores <strong>' + localCount + '</strong> session(s). Latest session date: <strong>' + latest + '</strong>.');
+  const latest = sessions.length ? sessions[sessions.length - 1].date : 'No sessions yet';
+  setLocalStatus('This browser stores <strong>' + sessions.length + '</strong> session(s). Latest: <strong>' + latest + '</strong>.');
   updateCloudStatus(); loadCloudConfigIntoForm();
 }
 
@@ -721,20 +694,21 @@ function loadCloudConfigIntoForm() {
   });
   document.getElementById('auto-sync-toggle').checked = isAutoSyncEnabled();
 }
-function saveCloudConfig() { const cfg = getCloudConfigFromForm(); localStorage.setItem(STORAGE_KEYS.cloudConfig, JSON.stringify(cfg)); updateCloudStatus('Cloud config saved locally on this device.'); }
+function saveCloudConfig() { localStorage.setItem(STORAGE_KEYS.cloudConfig, JSON.stringify(getCloudConfigFromForm())); updateCloudStatus('Cloud config saved.'); }
 function isAutoSyncEnabled() { return localStorage.getItem(STORAGE_KEYS.autoSync) === '1'; }
 function handleAutoSyncToggle() { localStorage.setItem(STORAGE_KEYS.autoSync, document.getElementById('auto-sync-toggle').checked ? '1' : '0'); updateCloudStatus('Auto-sync preference saved.'); }
 function updateCloudStatus(extraText) {
   const el = document.getElementById('cloud-status'); const cfg = loadSavedCloudConfig();
-  const prefix = cloudConnected ? '<span class="connected"><span class="connected-dot"></span>Connected</span>' : '<span class="disconnected"><span class="connected-dot"></span>Not connected</span>';
+  const prefix = cloudConnected ? '<span class="connected">● Connected</span>' : '<span class="disconnected">● Not connected</span>';
   const details = cfg.syncKey ? (' Sync Key: <strong>' + cfg.syncKey + '</strong>.') : ' No Sync Key saved yet.';
   const tail = extraText ? ('<br>' + extraText) : '';
   el.innerHTML = prefix + details + tail;
 }
 async function ensureFirebaseModules() {
   if (firebaseRefs) return firebaseRefs;
-  const appMod = await import('https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js');
-  const dbMod = await import('https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js');
+  const base = 'https://www.gstatic.com/firebasejs/12.14.0/';
+  const appMod = await import(base + 'firebase-app.js');
+  const dbMod = await import(base + 'firebase-database.js');
   firebaseRefs = Object.assign({}, appMod, dbMod); return firebaseRefs;
 }
 function validateCloudConfig(cfg) {
@@ -761,7 +735,7 @@ async function connectCloud() {
       const incomingTs = (data.meta && data.meta.updatedAt) ? data.meta.updatedAt : Date.now();
       if (data.meta && data.meta.lastClientId === clientId && incomingTs === lastPushTs) {
         lastCloudTs = Math.max(lastCloudTs, incomingTs);
-        updateCloudStatus('Cloud listener active. Last write was your own device.'); return;
+        updateCloudStatus('Last write was your own device.'); return;
       }
       if (incomingTs <= lastCloudTs) return;
       lastCloudTs = incomingTs; sessions = data.sessions; saveData(); rerenderAll();
@@ -769,7 +743,7 @@ async function connectCloud() {
       showSaveMsg('Cloud update received');
     }, (err) => { updateCloudStatus('Cloud listener error: ' + (err.message || err)); });
     window._cloudDb = db; cloudConnected = true;
-    updateCloudStatus('Cloud listener connected. You can now push or pull data.');
+    updateCloudStatus('Cloud connected.');
   } catch(err) { cloudConnected = false; updateCloudStatus('Connection failed: ' + (err.message || err)); }
 }
 async function pushCloud(silent) {
@@ -781,7 +755,7 @@ async function pushCloud(silent) {
     const payload = { sessions: sessions, meta: { updatedAt: ts, lastClientId: clientId, appVersion: APP_VERSION } };
     await f.set(f.ref(window._cloudDb, 'pplTracker/' + cfg.syncKey), payload);
     lastPushTs = ts; lastCloudTs = ts;
-    updateCloudStatus('Local data pushed to cloud at ' + new Date(ts).toLocaleString() + '.');
+    updateCloudStatus('Pushed to cloud at ' + new Date(ts).toLocaleString() + '.');
     if (!silent) showSaveMsg('Cloud push completed');
   } catch(err) { updateCloudStatus('Push failed: ' + (err.message || err)); }
 }
@@ -791,22 +765,16 @@ async function pullCloud() {
     if (!cloudConnected || !window._cloudDb) return;
     const cfg = loadSavedCloudConfig(); const f = await ensureFirebaseModules();
     const snap = await f.get(f.ref(window._cloudDb, 'pplTracker/' + cfg.syncKey));
-    if (!snap.exists()) { updateCloudStatus('No cloud data found yet for this Sync Key.'); return; }
+    if (!snap.exists()) { updateCloudStatus('No cloud data yet.'); return; }
     const data = snap.val();
-    if (!data || !Array.isArray(data.sessions)) { updateCloudStatus('Cloud record format is invalid.'); return; }
+    if (!data || !Array.isArray(data.sessions)) { updateCloudStatus('Invalid format.'); return; }
     sessions = data.sessions; saveData();
     lastCloudTs = data.meta && data.meta.updatedAt ? data.meta.updatedAt : Date.now();
     rerenderAll();
-    updateCloudStatus('Cloud data pulled successfully. Local device now has ' + sessions.length + ' session(s).');
+    updateCloudStatus('Pulled ' + sessions.length + ' session(s).');
     showSaveMsg('Cloud pull completed');
   } catch(err) { updateCloudStatus('Pull failed: ' + (err.message || err)); }
 }
-
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.swap-btn') && !e.target.closest('.swap-panel')) {
-    document.querySelectorAll('.swap-panel').forEach(d => d.classList.remove('open'));
-  }
-});
 
 document.getElementById('session-date').value = new Date().toISOString().slice(0, 10);
 loadTheme(); loadData(); renderLogExercises(); populateProgressSelect(); renderStats();
